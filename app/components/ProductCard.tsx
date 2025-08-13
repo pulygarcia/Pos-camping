@@ -1,14 +1,7 @@
 'use client'
 
 import { useCartStore } from "@/app/src/store";
-
-type Product = {
-  id: number;
-  name: string;
-  price: string;
-  quantity: number;
-  image: string;
-};
+import { Product } from "../src/schemas";
 
 export default function ProductCard({product}:{product:Product}) {
     const addToCart = useCartStore((state) => state.addToCart);
@@ -35,7 +28,7 @@ export default function ProductCard({product}:{product:Product}) {
                 product.quantity > 0 ? 'text-amber-600' : 'text-red-500'
             }`}
             >
-            {product.quantity > 0 ? `${product.quantity} en stock` : 'Sin stock'}
+            {product.quantity == 0 ? 'Sin stock' : product.quantity == 1 ? 'Último disponible' : `${product.quantity} en stock`}
         </p>
         <button
         onClick={() => addToCart(product)}

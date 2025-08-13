@@ -2,6 +2,7 @@
 
 import { useCartStore } from "../src/store";
 import Link from "next/link";
+import SubmitOrder from "./SubmitOrder";
 
 export default function Cart() {
     const { cart, inventory, updateQuantity, removeItemFromCart } = useCartStore();
@@ -110,9 +111,9 @@ export default function Cart() {
                                     <p className="text-lg font-semibold text-gray-700 mb-4">Total</p>
                                     <span className="font-semibold">${totalToPay}</span>
                                 </div>
-                                <button className="w-full bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition cursor-pointer">
-                                    Finalizar compra
-                                </button>
+
+                                <SubmitOrder />
+                                
                             </div>
                         </>
                     )}
