@@ -36,7 +36,6 @@ export default async function StorePage({params}: {params: Params}) {
         <section className="bg-gray-50">
             <div className="pt-6 container mx-auto">
                 <StoreInitializer products={products}/>
-                <h1 className="py-4 text-lg uppercase">¡Tu próxima salida empieza acá!</h1>
                 <div className="my-6">
                     <p className="text-sm">Filtrar por</p>
                     <CategoriesListNav categories={categories}/>
