@@ -4,6 +4,7 @@ export const CategorySchema = z.object({
   id: z.number(),
   name: z.string()
 });
+export const CategoryResponseSchema = z.array(CategorySchema);
 
 export const ProductSchema = z.object({
   id: z.number(),
@@ -14,10 +15,33 @@ export const ProductSchema = z.object({
   category: CategorySchema.optional()
 });
 
-export const productResponseSchema = z.object({
+export const productsResponseSchema = z.object({
   data: z.array(ProductSchema),
   total: z.number()
 })
+
+export const CreateProductSchema = z.object({
+  name: z
+    .string()
+    .min(3, { message: "El nombre debe tener al menos 3 caracteres" })
+    .max(100, { message: "El nombre no puede superar los 100 caracteres" }),
+    
+  price: z
+    .coerce
+    .number()
+    .min(1, { message: "El precio debe ser mayor o igual a 1" })
+    .max(1000000, { message: "El precio no puede superar 1,000,000" }),
+
+  quantity: z
+    .coerce
+    .number()
+    .min(1, { message: "Se debe agregar al menos una unidad al stock" })
+    .max(10000, { message: "La cantidad no puede superar 10,000" }),
+
+  categoryId: z
+    .string()
+    .min(1, { message: "Debes seleccionar una categoría" }),
+});
 
 export const CartProductSchema = ProductSchema.omit({ quantity: true }).extend({
   cartQuantity: z.number(), 

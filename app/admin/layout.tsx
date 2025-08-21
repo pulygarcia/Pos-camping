@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import AdminHeader from "../components/AdminHeader";
 
 export default async function RootLayout({
@@ -8,6 +9,8 @@ export default async function RootLayout({
   return (
     <>
         <main>
+            <ToastContainer />
+
             <AdminHeader />
 
             {children}
