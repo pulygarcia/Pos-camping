@@ -41,6 +41,8 @@ export const CreateProductSchema = z.object({
   categoryId: z
     .string()
     .min(1, { message: "Debes seleccionar una categoría" }),
+  image: z
+    .string({message: 'La imagen es obligatoria'})
 });
 
 export const CartProductSchema = ProductSchema.omit({ quantity: true }).extend({

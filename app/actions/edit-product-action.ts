@@ -14,6 +14,7 @@ export async function editProduct(id:string,prevState:ActionStateType,formData:F
         categoryId: formData.get('categoryId'),
         price: formData.get('price'),
         quantity: formData.get('quantity'),
+        image: formData.get('image'),
     }
 
     const result = CreateProductSchema.safeParse(rawData);

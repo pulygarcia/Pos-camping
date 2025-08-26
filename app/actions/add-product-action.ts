@@ -14,6 +14,7 @@ export async function addProduct(prevState:ActionStateType,formData:FormData) {
         categoryId: formData.get('categoryId'),
         price: formData.get('price'),
         quantity: formData.get('quantity'),
+        image: formData.get('image'),
     }
 
     const result = CreateProductSchema.safeParse(rawData);

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { isValidPage } from "../src/utils";
 import { redirect } from "next/navigation";
 import PaginationNumbers from "../components/Pagination";
+import { getImageUrl } from "../src/utils";
 
 type SearchParams = Promise<{page: string}>
 
@@ -66,7 +67,7 @@ export default async function AdminPage({searchParams} : {searchParams: SearchPa
               <td className="border border-gray-300 px-4 py-2">{product.quantity}</td>
               <td className="border border-gray-300 px-4 py-2">
                 <img
-                  src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/img/${product.image}`}
+                  src={getImageUrl(product.image)}
                   alt={product.name}
                   className="w-16 h-16 object-cover mx-auto"
                 />

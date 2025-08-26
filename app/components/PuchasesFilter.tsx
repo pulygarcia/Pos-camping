@@ -7,6 +7,7 @@ import {format} from 'date-fns'
 import { useQuery } from "@tanstack/react-query";
 import { getPurchasesByDate } from "../src/api";
 import { Transaction, TransactionContent } from "../src/schemas";
+import { getImageUrl } from "../src/utils";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -61,7 +62,7 @@ export default function PurchasesFilter() {
                       {transaction.contents.map((content: TransactionContent) => (
                         <li key={content.id} className="flex items-center gap-4 bg-white p-2 rounded shadow-sm">
                           <img
-                            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/img/${content.product.image}`}
+                            src={getImageUrl(content.product.image)}
                             alt={content.product.name}
                             className="w-16 h-16 object-cover rounded"
                           />

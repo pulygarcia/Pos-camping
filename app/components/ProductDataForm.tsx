@@ -1,4 +1,5 @@
 import { CategoryResponseSchema } from "../src/schemas";
+import ImageDropZone from "./UploadProductImage";
 
 async function getCategories(){
     const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/categories`;
@@ -66,6 +67,8 @@ export default async function ProductDataForm() {
             className="w-full border border-gray-300 rounded px-3 py-2"
           />
         </div>
+
+        <ImageDropZone />
     </>
   );
 }

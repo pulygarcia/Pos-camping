@@ -3,9 +3,9 @@
 import { useActionState, useEffect } from "react";
 import { addProduct } from "../actions/add-product-action";
 import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 export default function NewProductForm({children} : {children: React.ReactNode}) {
-
     const initialState = {
       errors: [],
       successMessage: ''
@@ -19,6 +19,7 @@ export default function NewProductForm({children} : {children: React.ReactNode})
       }
       if(state.successMessage){
         toast.success(state.successMessage)
+        redirect('/admin')
       }
     },[state])
 

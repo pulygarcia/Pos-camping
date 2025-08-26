@@ -16,3 +16,13 @@ export function isValidPage(value: number) {
 
     return true;
 }
+
+export function getImageUrl(image: string) {
+  if (!image) return "";
+
+  const isCloudinary = image.startsWith("http") && image.includes("cloudinary.com");
+
+  if (isCloudinary) return image;
+  //if is not from cloudinary, return locale backend image
+  return `${process.env.NEXT_PUBLIC_API_BASE_URL}/img/${image}`;
+}

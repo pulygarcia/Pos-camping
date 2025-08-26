@@ -2,6 +2,7 @@
 
 import { useCartStore } from "@/app/src/store";
 import { Product } from "../src/schemas";
+import { getImageUrl } from "../src/utils";
 
 export default function ProductCard({product}:{product:Product}) {
     const addToCart = useCartStore((state) => state.addToCart);
@@ -13,7 +14,7 @@ export default function ProductCard({product}:{product:Product}) {
     >
         {product.image && (
         <img
-            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/img/${product.image}`}
+            src={getImageUrl(product.image)}
             alt={product.name}
             width={200}
             height={400}
@@ -33,6 +34,7 @@ export default function ProductCard({product}:{product:Product}) {
         <button
         onClick={() => addToCart(product)}
         className="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition cursor-pointer text-base"
+        disabled={product.quantity == 0 ? true : false}
         >
         Agregar al carrito
         </button>

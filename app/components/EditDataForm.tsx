@@ -1,4 +1,5 @@
 import { CategoryResponseSchema, ProductSchema } from "../src/schemas";
+import ImageDropZone from "./UploadProductImage";
 
 async function getCategories(){
     const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/categories`;
@@ -75,6 +76,8 @@ export default async function EditDataForm({id} : {id: string }) {
             defaultValue={currentProduct.quantity}
         />
         </div>
+
+        <ImageDropZone currentImage={currentProduct.image}/>
     </>
   );
 }
